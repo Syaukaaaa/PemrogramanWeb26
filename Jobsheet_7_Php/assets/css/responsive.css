@@ -1,0 +1,120 @@
+/* ==========================================================
+   responsive.css — SIMPUS-Mini
+   Dimuat SETELAH style.css (Jobsheet 2).
+   Isi: gabungan Jobsheet 3 (responsive), Jobsheet 5 (hamburger JS,
+   error validasi, kolom pencarian), dan Jobsheet 7 (flash message).
+   ========================================================== */
+ 
+ 
+/* ===== Hamburger Menu (dikendalikan JavaScript / app.js) =====
+   Elemennya <button id="nav-toggle-btn" class="nav-toggle-label">.
+   Disembunyikan di layar besar, baru dimunculkan di media query mobile. */
+.nav-toggle-label {
+    display: none;
+    font-size: 1.6rem;
+    color: #fff;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+ 
+ 
+/* ===== Tabel Responsif =====
+   Pembungkus <div class="table-responsive"> supaya tabel lebar
+   bisa di-scroll ke samping di layar sempit. */
+.table-responsive {
+    overflow-x: auto;
+}
+ 
+ 
+/* ===== Pesan Error Validasi (dibuat oleh JavaScript) ===== */
+.error {
+    display: block;
+    color: #d9534f;
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+}
+ 
+ 
+/* ===== Kolom Pencarian ===== */
+.search-box {
+    margin-bottom: 1rem;
+}
+ 
+.search-box input {
+    width: 100%;
+    max-width: 320px;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #cdd4da;
+    border-radius: 4px;
+}
+ 
+ 
+/* ===== Flash Message (Jobsheet 7) ===== */
+.flash {
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+ 
+.flash-success {
+    background-color: #d4edda;
+    color: #155724;
+}
+ 
+.flash-error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+ 
+ 
+/* ==========================================================
+   Responsive Breakpoints
+   WAJIB di paling bawah file: kalau spesifisitas sama, aturan
+   yang ditulis belakangan yang menang.
+   ========================================================== */
+ 
+/* Tablet ke bawah */
+@media (max-width: 768px) {
+    main section:nth-of-type(2) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+ 
+/* Mobile */
+@media (max-width: 480px) {
+    header {
+        position: relative;
+    }
+ 
+    .nav-toggle-label {
+        display: block;
+    }
+ 
+    header nav {
+        display: none;
+        width: 100%;
+        order: 3;
+        margin-top: 1rem;
+    }
+ 
+    /* class nav-open ditambah/dihapus oleh app.js (classList.toggle) */
+    header nav.nav-open {
+        display: block;
+    }
+ 
+    header nav ul {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+ 
+    main section:nth-of-type(2) {
+        grid-template-columns: 1fr;
+    }
+ 
+    form input,
+    form select {
+        max-width: 100%;
+    }
+}
