@@ -1,0 +1,182 @@
+/* ==========================================================
+   responsive.css — SIMPUS-Mini
+   Dimuat SETELAH style.css (Jobsheet 2).
+   Isi: gabungan Jobsheet 3 (responsive), Jobsheet 5 (hamburger JS,
+   error validasi, kolom pencarian), dan Jobsheet 7 (flash message).
+   ========================================================== */
+ 
+ 
+/* ===== Hamburger Menu (dikendalikan JavaScript / app.js) =====
+   Elemennya <button id="nav-toggle-btn" class="nav-toggle-label">.
+   Disembunyikan di layar besar, baru dimunculkan di media query mobile. */
+.nav-toggle-label {
+    display: none;
+    font-size: 1.6rem;
+    color: #fff;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+ 
+ 
+/* ===== Tabel Responsif =====
+   Pembungkus <div class="table-responsive"> supaya tabel lebar
+   bisa di-scroll ke samping di layar sempit. */
+.table-responsive {
+    overflow-x: auto;
+}
+ 
+ 
+/* ===== Pesan Error Validasi (dibuat oleh JavaScript) ===== */
+.error {
+    display: block;
+    color: #d9534f;
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+}
+ 
+ 
+/* ===== Kolom Pencarian ===== */
+.search-box {
+    margin-bottom: 1rem;
+}
+ 
+.search-box input {
+    width: 100%;
+    max-width: 320px;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #cdd4da;
+    border-radius: 4px;
+}
+ 
+ 
+/* ===== Flash Message (Jobsheet 7) ===== */
+.flash {
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+ 
+.flash-success {
+    background-color: #d4edda;
+    color: #155724;
+}
+ 
+.flash-error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+ 
+ 
+/* ==========================================================
+   Responsive Breakpoints
+   WAJIB di paling bawah file: kalau spesifisitas sama, aturan
+   yang ditulis belakangan yang menang.
+   ========================================================== */
+ 
+/* Tablet ke bawah */
+@media (max-width: 768px) {
+    main section:nth-of-type(2) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+ 
+/* Mobile */
+@media (max-width: 480px) {
+    header {
+        position: relative;
+    }
+ 
+    .nav-toggle-label {
+        display: block;
+    }
+ 
+    header nav {
+        display: none;
+        width: 100%;
+        order: 3;
+        margin-top: 1rem;
+    }
+ 
+    /* class nav-open ditambah/dihapus oleh app.js (classList.toggle) */
+    header nav.nav-open {
+        display: block;
+    }
+ 
+    header nav ul {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+ 
+    main section:nth-of-type(2) {
+        grid-template-columns: 1fr;
+    }
+ 
+    form input,
+    form select {
+        max-width: 100%;
+    }
+}
+
+/* ===== Jobsheet 9: Edit, Hapus, Pagination, Search ===== */
+td a.btn-edit {
+    display: inline-block;
+    padding: 0.35rem 0.7rem;
+    margin-right: 0.35rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    background-color: #f0ad4e;
+    color: #fff;
+    text-decoration: none;
+}
+
+td form.form-hapus {
+    display: inline;
+}
+
+/* Dispesifikkan supaya tombol Hapus tetap merah, bukan ikut warna oranye
+   dari aturan td button:first-of-type (karena sekarang ada di dalam <form>) */
+td form.form-hapus button.btn-hapus {
+    background-color: #d9534f;
+    color: #fff;
+    padding: 0.35rem 0.7rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.pagination {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.pagination a {
+    padding: 0.4rem 0.75rem;
+    border: 1px solid #cdd4da;
+    border-radius: 4px;
+    color: #1d5e3f;
+}
+
+.pagination a.active {
+    background-color: #1d5e3f;
+    color: #fff;
+    border-color: #1d5e3f;
+}
+
+.search-box form {
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-end;
+}
+
+.search-box button {
+    padding: 0.55rem 1.2rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #1d5e3f;
+    color: #fff;
+    cursor: pointer;
+}
